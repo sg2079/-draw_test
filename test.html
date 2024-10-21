@@ -11,13 +11,13 @@
     <button onclick="checkAndDraw()">제비뽑기</button>
     <p id="message"></p>
     <script>
-        const users = ["홍길동1", "홍길동2", "홍길동3", "홍길동4"]; 
+        const users = ["홍길동1", "홍길동2", "홍길동3", "홍길동4"];
         const drawnIds = new Set();
-
+        
         function checkAndDraw() {
             const userId = document.getElementById('userId').value;
             const messageElement = document.getElementById('message');
-            
+                        
             if (!userId || !users.includes(userId)) {
                 messageElement.innerText = '아이디를 입력하세요.';
                 return;
@@ -27,15 +27,15 @@
                 messageElement.innerText = '이미 뽑기를 하셨습니다.';
             } else {
                 drawnIds.add(userId);
-                drawWinner();
+                drawWinner(userId);
             }
         }
-
-        function drawWinner() {
+        
+        function drawWinner(userId) {
             const winnerIndex = Math.floor(Math.random() * users.length);
             const winner = users[winnerIndex];
             document.getElementById('message').innerText = winner === userId ? '당첨!' : '꽝!';
-        }2
+        }
     </script>
 </body>
 </html>
